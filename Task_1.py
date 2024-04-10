@@ -13,8 +13,6 @@
 Отдельно сообщить является ли треугольник разносторонним, равнобедренным или равносторонним.
 '''
 
-print('--- 2 ---')
-
 a = 8
 b = 7
 c = 5
@@ -30,8 +28,6 @@ else:
     else:
         print('-> Треугольник разносторонний')
 
-print('---')
-
 
 '''
 3. Напишите код, который запрашивает число и сообщает является ли оно простым или составным.
@@ -39,25 +35,20 @@ print('---')
 Сделайте ограничение на ввод отрицательных чисел и чисел больше 100 тысяч.
 '''
 
-print('--- 3 ---')
-
 number = int(input('Введите число: '))
 
 if number < 0 or number > 100_000:
     print(f'Число ({number}) не подходит по условию! Введите положительное число < 100 000')
-
 else:
     count = 0
-    for i in range(int(number / 2)):
-        if number % (i + 1) == 0:
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
             count += 1
-            print(i+1)
-    if count > 1:
+            break
+    if count > 0:
         print('Число является составным !')
     else:
-        print('Число является простым, если делится нацело только на единицу и на себя')
-
-print('---')
+        print('Число является простым, делится нацело только на единицу и на себя')
 
 
 '''4. Программа загадывает число от 0 до 1000. Необходимо угадать число за 10 попыток.
@@ -65,21 +56,16 @@ print('---')
 from random import randintnum = randint(LOWER_LIMIT, UPPER_LIMIT)
 '''
 
-print('--- 4 ---')
-
 from random import randint
 
 number_to_guess = randint(1, 100)
 attempt = 10
 i = 0 
-
 while i < attempt:
     number = int(input(f'Попытка {i+1}/{attempt} Введите число: '))
-
     if number == number_to_guess:
         print('You are a winner!')
         break
-
     if number > number_to_guess:
         print('The number is less!')
     else:
@@ -87,5 +73,3 @@ while i < attempt:
     i += 1
 else:
     print('You lose...')
-
-print('---')
