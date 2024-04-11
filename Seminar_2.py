@@ -95,9 +95,9 @@ BASE = 2 # 8 для восьмеричной
 
 number = int(input('Number: '))
 if BASE == 2:
-      print(bin(number))
+    print(bin(number))
 if BASE == 8:
-     print(oct(number))
+    print(oct(number))
 
 result = ''
 while number >= BASE:
@@ -228,3 +228,4 @@ if __name__ == '__main__':
     is_flag = True
     while is_flag:
         balance, is_flag = menu(balance, count, is_flag)
+        
