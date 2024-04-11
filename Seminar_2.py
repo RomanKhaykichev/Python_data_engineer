@@ -51,13 +51,13 @@ a = complex(2, 3) - (2+3j), j - мнимая единица
 Создайте несколько переменных разных типов.
 Проверьте к какому типу относятся созданные переменные.
 '''
-# a = 13
-# b = 5.1
-# c = 'hello'
-# d = {a, b, c}
-# e = [a, b, c]
-# f = {a:1, b:2}
-# print(type(a),type(b), type(c), type(d), type(e), type(f))
+a = 13
+b = 5.1
+c = 'hello'
+d = {a, b, c}
+e = [a, b, c]
+f = {a:1, b:2}
+print(type(a),type(b), type(c), type(d), type(e), type(f))
 
 '''Task_2
 Создайте в переменной data список значений разных типов перечислив их через запятую внутри квадратных скобок.
@@ -67,22 +67,22 @@ a = complex(2, 3) - (2+3j), j - мнимая единица
 Добавьте в список повторяющиеся элементы и сравните на результаты
 '''
 
-# from sys import getsizeof
-# from typing import Hashable
+from sys import getsizeof
+from typing import Hashable
 
-# data = [1, 'row', 5.11, [1, 2], {2, 3}]
-# for number, i in enumerate(data, start=1):
-#     print(number, end='\t' )
-#     print(i, end='\t' )
-#     print(id(i), end='\t')
-#     print(getsizeof(i), end='\t')
-#     if isinstance(i, Hashable):
-#         print(hash(i), end='\t')
-#     if isinstance(i, int):
-#         print('целое число', end='\t')
-#     if isinstance(i, str):               # if type(i) == str:
-#         print('строка', end='\t')
-#     print('')
+data = [1, 'row', 5.11, [1, 2], {2, 3}]
+for number, i in enumerate(data, start=1):
+    print(number, end='\t' )
+    print(i, end='\t' )
+    print(id(i), end='\t')
+    print(getsizeof(i), end='\t')
+    if isinstance(i, Hashable):
+        print(hash(i), end='\t')
+    if isinstance(i, int):
+        print('целое число', end='\t')
+    if isinstance(i, str):               # if type(i) == str:
+        print('строка', end='\t')
+    print('')
 
 '''Task_3
 Напишите программу, которая получает целое число и возвращает его двоичное, восьмеричное строковое представление.
@@ -91,55 +91,55 @@ a = complex(2, 3) - (2+3j), j - мнимая единица
 Попробуйте избежать дублирования кода в преобразованиях к разным системам счисления
 Избегайте магических чисел. Добавьте аннотацию типов где это возможно'''
 
-# BASE = 2 # 8 для восьмеричной
+BASE = 2 # 8 для восьмеричной
 
-# number = int(input('Number: '))
-# if BASE == 2:
-#       print(bin(number))
-# if BASE == 8:
-#      print(oct(number))
+number = int(input('Number: '))
+if BASE == 2:
+      print(bin(number))
+if BASE == 8:
+     print(oct(number))
 
-# result = ''
-# while number >= BASE:
-#     result += str(number % BASE)
-#     number //= BASE
-# result += str(number)
-# print(result[::-1])
+result = ''
+while number >= BASE:
+    result += str(number % BASE)
+    number //= BASE
+result += str(number)
+print(result[::-1])
 
 '''Task_4
 Напишите программу, которая вычисляет площадь круга и длину окружности по введённому диаметру.
 Диаметр не превышает 1000 у.е. Точность вычислений должна составлять не менее 42 знаков после запятой.
 '''
-# import decimal
-# import math
+import decimal
+import math
 
-# decimal.getcontext().prec = 50
-# d = decimal.Decimal(input('Diametr < 1000: '))
-# r = d / 2
-# pi = decimal.Decimal(math.pi)
-# s = pi * r ** 2
-# long = 2 * pi * r
-# print(s, long)
+decimal.getcontext().prec = 50
+d = decimal.Decimal(input('Diametr < 1000: '))
+r = d / 2
+pi = decimal.Decimal(math.pi)
+s = pi * r ** 2
+long = 2 * pi * r
+print(s, long)
 
 '''Task_5
 Напишите программу, которая решает квадратные уравнения даже если дискриминант отрицательный.
 Используйте комплексные числа для извлечения квадратного корня.
 '''
 
-# a = int(input('print a: '))
-# b = int(input('print b: '))
-# c = int(input('print c: '))
+a = int(input('print a: '))
+b = int(input('print b: '))
+c = int(input('print c: '))
 
-# d = b ** 2 - 4 * a * c
-# if d > 0:
-#     print((-b + d ** 0.5) / (2 * a))
-#     print((-b - d ** 0.5) / (2 * a))
-# elif d == 0:
-#     print((-b) / (2 * a))
-# else:
-#     d = complex(d)
-#     print((-b + d ** 0.5) / (2 * a))
-#     print((-b - d ** 0.5) / (2 * a))
+d = b ** 2 - 4 * a * c
+if d > 0:
+    print((-b + d ** 0.5) / (2 * a))
+    print((-b - d ** 0.5) / (2 * a))
+elif d == 0:
+    print((-b) / (2 * a))
+else:
+    d = complex(d)
+    print((-b + d ** 0.5) / (2 * a))
+    print((-b - d ** 0.5) / (2 * a))
     
 '''Task_6
 Напишите программу банкомат.
