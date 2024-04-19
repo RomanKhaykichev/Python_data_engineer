@@ -64,20 +64,20 @@ sum(num, start=number)
 длинного слова был один пробел между ним и номером строки.
 """
 
-# def print_text(text: str):
-#     """Функция принемает строку текста и возвращает каждое слово с новой строки"""
-#     text_lst = text.split(' ')
-#     text_lst.sort()
+def print_text(text: str):
+    """Функция принемает строку текста и возвращает каждое слово с новой строки"""
+    text_lst = text.split(' ')
+    text_lst.sort()
 
-#     max_len = max([len(word) for word in text_lst])
-#     max_len_2 = len(max(text_lst, key=len))
+    max_len = max([len(word) for word in text_lst])
+    max_len_2 = len(max(text_lst, key=len))
 
-#     for i, word in enumerate(text_lst, 1):
-#         print(f'{i}  {word: >{max_len}}')
+    for i, word in enumerate(text_lst, 1):
+        print(f'{i}  {word: >{max_len}}')
 
 
-# if __name__ == '__main__':
-#     print_text(input('input text: '))
+if __name__ == '__main__':
+    print_text(input('input text: '))
 
 """Task_2
 Напишите функцию, которая принимает строку текста.
@@ -85,17 +85,17 @@ sum(num, start=number)
 символа введённой строки отсортированный по убыванию.
 """
 
-# def text_unicode(text: str) -> list:
-#     """формируйте список с уникальными кодами Unicode каждого символа введённой строки отсортированный по убыванию.
+def text_unicode(text: str) -> list:
+    """формируйте список с уникальными кодами Unicode каждого символа введённой строки отсортированный по убыванию.
     
-#     Сформируйте список с уникальными кодами Unicode каждого
-#     символа введённой строки отсортированный по убыванию.
-#     """
-#     return list(map(ord, sorted(set(text), reverse=True)))
+    Сформируйте список с уникальными кодами Unicode каждого
+    символа введённой строки отсортированный по убыванию.
+    """
+    return list(map(ord, sorted(set(text), reverse=True)))
 
 
-# if __name__ == '__main__':
-#     print(text_unicode(input('Write text: ')))
+if __name__ == '__main__':
+    print(text_unicode(input('Write text: ')))
 
 
 """Task_3
@@ -105,14 +105,14 @@ sum(num, start=number)
 Диапазон пар ключ-значение от наименьшего из введённых пользователем чисел до наибольшего включительно.
 """
 
-# def unicode_range(text: str) -> dict:
-#     """Возвращает словарь символов"""
-#     a, b = [int(i) for i in text.split()]
-#     return {chr(i):i for i in range(a, b+1)}
+def unicode_range(text: str) -> dict:
+    """Возвращает словарь символов"""
+    a, b = [int(i) for i in text.split()]
+    return {chr(i):i for i in range(a, b+1)}
 
 
-# if __name__ == '__main__':
-#     print(unicode_range(input('Two numbers: ')))
+if __name__ == '__main__':
+    print(unicode_range(input('Two numbers: ')))
 
 """Task_4
 Функция получает на вход список чисел.
@@ -121,18 +121,18 @@ sum(num, start=number)
 Её описание есть в википедии.
 """
 
-# def sort_numbers(num_list: list) -> None:
-#     """sort number in place"""
-#     for _ in range(len(num_list)):
-#         for j in range(len(num_list) - 1):
-#             if num_list[j] > num_list[j + 1]:
-#                 num_list[j], num_list[j + 1] = num_list[j + 1], num_list[j]
+def sort_numbers(num_list: list) -> None:
+    """sort number in place"""
+    for _ in range(len(num_list)):
+        for j in range(len(num_list) - 1):
+            if num_list[j] > num_list[j + 1]:
+                num_list[j], num_list[j + 1] = num_list[j + 1], num_list[j]
 
 
-# if __name__ == '__main__':
-#     lst = [int(i) for i in input('Numbers: ').split()]
-#     sort_numbers(lst)
-#     print(lst)
+if __name__ == '__main__':
+    lst = [int(i) for i in input('Numbers: ').split()]
+    sort_numbers(lst)
+    print(lst)
 
 """Task_5
 Функция принимает на вход три списка одинаковой длины:
@@ -144,20 +144,20 @@ sum(num, start=number)
 Сумма рассчитывается как ставка умноженная на процент премии.
 """
 
-# def calculate_bonus(names: list[str], rate: list[int], percents: list[str]) -> dict:
-#     """Рассчет премии."""
-#     dict_bonus = {}
-#     for names, rate, percents in zip(names, rate, percents):
-#         dict_bonus[names] = rate * float(percents[:-1]) / 100
-#         # dict_bonus.setdefault(names, rate * float(percents.replace('%', '')))
-#     return dict_bonus
+def calculate_bonus(names: list[str], rate: list[int], percents: list[str]) -> dict:
+    """Рассчет премии."""
+    dict_bonus = {}
+    for names, rate, percents in zip(names, rate, percents):
+        dict_bonus[names] = rate * float(percents[:-1]) / 100
+        # dict_bonus.setdefault(names, rate * float(percents.replace('%', '')))
+    return dict_bonus
 
 
-# if __name__ == '__main__':
-#     names = ['Alex', 'Andrew', 'Anton']
-#     rate = [30_000, 35_000, 50_000]
-#     percents = ['10.5%', '12.5%', '14.9%']
-#     print(calculate_bonus(names, rate, percents))
+if __name__ == '__main__':
+    names = ['Alex', 'Andrew', 'Anton']
+    rate = [30_000, 35_000, 50_000]
+    percents = ['10.5%', '12.5%', '14.9%']
+    print(calculate_bonus(names, rate, percents))
 
 """Task_6
 Функция получает на вход список чисел и два индекса.
@@ -166,22 +166,22 @@ sum(num, start=number)
 до конца и/или начала списка.
 """
 
-# def sum_range(numbers: list, x_1: int, x_2: int) -> int:
-#     """Вернуть сумму чисел между переданными индексами"""
-#     if x_1 > x_2:
-#         x_1, x_2 = x_2, x_1
-#     if x_1 < 0:
-#         x_1 = 0
-#     if x_2 >= len(numbers):
-#         x_2 = len(numbers) - 1
-#     return sum(numbers[x_1:x_2+1])
+def sum_range(numbers: list, x_1: int, x_2: int) -> int:
+    """Вернуть сумму чисел между переданными индексами"""
+    if x_1 > x_2:
+        x_1, x_2 = x_2, x_1
+    if x_1 < 0:
+        x_1 = 0
+    if x_2 >= len(numbers):
+        x_2 = len(numbers) - 1
+    return sum(numbers[x_1:x_2+1])
 
 
-# if __name__ == '__main__':
-#     numbers = [4, 45, 32, 434, 3, 32, 30, 5]
-#     x_1 = 5
-#     x_2 = 3
-#     print(sum_range(numbers, x_1, x_2))
+if __name__ == '__main__':
+    numbers = [4, 45, 32, 434, 3, 32, 30, 5]
+    x_1 = 5
+    x_2 = 3
+    print(sum_range(numbers, x_1, x_2))
 
 """Task_7
 Функция получает на вход словарь с названием компании в качестве ключа
@@ -190,23 +190,23 @@ sum(num, start=number)
 а если хотя бы одна убыточная — ложь.
 """
 
-# COMPANY_PROFIT = 19
+COMPANY_PROFIT = 19
 
 
-# def calculate_result(company_dictionary: dict) -> bool:
-#     """Возвращает истину, если все компании прибыльные """
-#     lst = [sum(value) > COMPANY_PROFIT for value in company_dictionary.values()]
-#     print(lst)
-#     return all(lst)
+def calculate_result(company_dictionary: dict) -> bool:
+    """Возвращает истину, если все компании прибыльные """
+    lst = [sum(value) > COMPANY_PROFIT for value in company_dictionary.values()]
+    print(lst)
+    return all(lst)
     
 
-# if __name__ == '__main__':
-#     company_dictionary = {
-#     'Micr': [2, 3, 4, 5, 6],
-#     'JMT': [3, 2, 5 , 6, 5],
-#     'PLS': [4, 2, 5, 5, 7],
-# }
-#     print(calculate_result(company_dictionary))
+if __name__ == '__main__':
+    company_dictionary = {
+    'Micr': [2, 3, 4, 5, 6],
+    'JMT': [3, 2, 5 , 6, 5],
+    'PLS': [4, 2, 5, 5, 7],
+}
+    print(calculate_result(company_dictionary))
 
 """Task_8
 Создайте несколько переменных заканчивающихся и не оканчивающихся на «s».
@@ -214,4 +214,36 @@ sum(num, start=number)
 Значения не удаляются, а помещаются в одноимённые переменные без s на конце.
 """
 
+# variables = ['room', 'cupcakes', 'coffee', 'cakes', 'sales']
 
+# def change_end_s(lst: list) -> list:
+#     """return without 's'"""
+#     lst_with_s = []
+#     for word in lst:
+#         for letters in range(len(word)):
+#             if word[letters] == 's':
+#                 lst_with_s.append(word)
+#                 lst.pop(lst.index(word))
+
+#     return lst_with_s
+
+
+def no_s():
+    """delete from list variables end with 's'"""
+    lst = {}
+    for var, value in globals().items():
+        if var != "s" and var.endswith("s") and var != "no_s":
+            lst[var[:-1]] = value
+            globals()[var] = None
+    for k, v in lst.items():
+        globals()[k] = v
+
+
+if __name__ == '__main__':
+    items = 0
+    names = 'dsdsd'
+    s = 5
+    value = 'ftft'
+    print(globals())
+    no_s()
+    print(globals())
