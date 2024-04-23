@@ -46,7 +46,8 @@ percent_list = ['10.55%', '15.70%', '30.25%']
 print({name: rate * float(percent[:-1]) for name, rate, percent in zip(name_list, rate_list, percent_list)})
 
 
-"""4. Создайте функцию генератор чисел Фибоначчи https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D0%BB%D0%B0_%D0%A4%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8"""
+"""4. Создайте функцию генератор чисел Фибоначчи
+https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D0%BB%D0%B0_%D0%A4%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8"""
 
 def generate_fibonacci(number: int):
     """генератор чисел Фибоначчи"""
@@ -59,4 +60,3 @@ def generate_fibonacci(number: int):
 
 
 print(*generate_fibonacci(11))
-
