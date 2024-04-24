@@ -4,4 +4,5 @@
 ### Task_2 -  Простые типы данных (help() -> keywords, модуль, функция)
 ### Task_3 -  Урок 3. Коллекции (список [], кортеж (), словарь {}, множества {})
 ### Task_4 -  Урок 4. Функции (func(), map, filter, zip, *args, **kwargs, all, globals)
-### Task_5 -  Урок 5. Интераторы и генераторы (iter(), next(), comprehensions, *unpacking, yield )
+### Task_5 -  Урок 5. Интераторы и генераторы (iter(), next(), comprehensions, *unpacking, yield)
+### Task_6 -  Урок 6. Модули (import module, from module import name <-> *, __all__, __init__.py, sys-argv, random )
