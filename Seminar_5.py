@@ -149,7 +149,7 @@ def prime(n):
         return True
     if n % 2 == 0:
         return False
-    for i in range(3, int(n ** 0.5) + 1):
+    for i in range(3, int(n ** 0.5) + 1, 2):
         if n % i == 0:
             return False
     return True
@@ -167,4 +167,14 @@ j = generate_simple()
 for _ in range(int(input('Write count: '))):
     print(next(j), end=' ')
 
+# Ver_2 with StopIteration
+def generate_simple_2(m):
+    for i in range(2, m):
+        if i > 200:
+            raise StopIteration()
+        if prime(i):
+            yield i
 
+j_2 = generate_simple_2(int(input('Write count: ')))
+for i in j_2:
+    print(i, end=' ')
