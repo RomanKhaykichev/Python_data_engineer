@@ -213,6 +213,7 @@ def read_line_or_begin(fd) -> str:
 
 
 def process_files(file_numbers, file_names, file_res):
+    """Сохраняет имя из файла с именами и перемножение чиисел из файла с числами"""
     with (
         open(file_numbers, 'r', encoding='utf-8') as f_num,
         open(file_names, 'r', encoding='utf-8') as f_names,
@@ -300,6 +301,7 @@ if __name__ == '__main__':
 
 
 def generate_with_dictionary(dictionary: dict):
+    """Генерирует с файлы с заданным расширением"""
     for key, value in dictionary.items():
         generate_files(key, 'Seminar_7_data_4', num_files=value)
 
@@ -379,6 +381,7 @@ DICTIONARY = {
 }
 
 def sort_files(directory):
+    """Сортирует файлы по директориям: видео, изображения, текст и т.п."""
     for f in os.listdir(directory):
         extension = f.rsplit('.')[-1]
         if extension not in DICTIONARY:
