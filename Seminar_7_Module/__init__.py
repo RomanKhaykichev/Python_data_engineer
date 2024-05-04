@@ -1,1 +1,1 @@
-__all__ = ['extensions_files', 'sort_directory_files', 'pseudonyms_file', 'random_numbers_file', 'pseudonyms_mult_random_numbers_file']
+__all__ = ['extensions_files', 'sort_directory_files', 'pseudonyms_file', 'random_numbers_file', 'pseudonyms_mult_random_numbers_file', 'rename_group_files']
