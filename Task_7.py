@@ -51,3 +51,4 @@ if __name__ == '__main__':
     sort_files('Seminar_7_data_4')
     # Переименовываем файлы, добавляем порядковый номер 
     rename_files('_new_', 3, 'txt', 'docx', [3, 6], 'Seminar_7_data_4/texts')
+    
