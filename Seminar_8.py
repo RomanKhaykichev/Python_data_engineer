@@ -107,23 +107,24 @@ import pickle
 Вспоминаем задачу 3 из прошлого семинара. Мы сформировали текстовый файл с псевдо именами и произведением чисел.
 Напишите функцию, которая создаёт из созданного ранее файла новый с данными в формате JSON.
 Имена пишите с большой буквы. Каждую пару сохраняйте с новой строки."""
+
 # Seminar_73_data_3.txt
 
-# import json
+import json
 
-# def text_to_json(name = 'Seminar_73_data_3.txt'):
-#     with ( 
-#         open(name, 'r', encoding='utf-8') as f,
-#         open('Seminar_73_data_3.json', 'w', encoding='utf-8') as f2
-#     ):
-#         res_list = []
-#         for line in f:
-#             res_list.append(line.capitalize())
-#         json.dump(res_list, f2, indent=4)
+def text_to_json(name = 'Seminar_73_data_3.txt'):
+    with ( 
+        open(name, 'r', encoding='utf-8') as f,
+        open('Seminar_73_data_3.json', 'w', encoding='utf-8') as f2
+    ):
+        res_list = []
+        for line in f:
+            res_list.append(line.capitalize())
+        json.dump(res_list, f2, indent=4)
 
 
-# if __name__ == '__main__':
-#     text_to_json()
+if __name__ == '__main__':
+    text_to_json()
 
 """Task_2
 Напишите функцию, которая в бесконечном цикле запрашивает имя, личный идентификатор и уровень доступа (от 1 до 7).
@@ -187,6 +188,133 @@ if __name__ == '__main__':
     access_users()
 
 """Task_3
-
-
+Напишите функцию, которая сохраняет созданный в прошлом задании файл в формате CSV.
 """
+
+import json
+
+
+def json_to_csv(name='Seminar_82_db.json', res_file='Seminar_83_db.csv'):
+    with open(name, 'r', encoding='utf-8') as f_json:
+        db = json.load(f_json)
+    with open(res_file, 'w', encoding='utf-8') as f:
+        for k, v in db.items():
+            for k2, v2 in v.items():
+                print(f'{k}, {k2}, {v2}', file=f)
+
+
+if __name__ == '__main__':
+    json_to_csv()
+
+"""Task_4
+Прочитайте созданный в прошлом задании csv файл без использования csv.DictReader.
+Дополните id до 10 цифр незначащими нулями. В именах первую букву сделайте прописной.
+Добавьте поле хеш на основе имени и идентификатора.
+Получившиеся записи сохраните в json файл, где каждая строка csv файла представлена как отдельный json словарь.
+Имя исходного и конечного файлов передавайте как аргументы функции.
+"""
+
+import csv
+import json
+from pathlib import Path
+
+
+def csv2json(from_file: Path, to_file: Path) -> None:
+    json_list = []
+    with open(from_file, 'r', newline='', encoding='utf-8') as f:
+        csv_write = csv.reader(f, dialect='excel')
+        for i, line in enumerate(csv_write):
+            json_dict = {}
+            if i == 0: # если есть заголовки
+                continue
+            else:
+                level, id, name = line
+                json_dict['level'] = int(level)
+                json_dict['id'] = f"{int(id):010}"
+                json_dict['name'] = name.title()
+                json_dict['hash'] = hash(f"{json_dict['name']}{json_dict['id']}")
+                json_list.append(json_dict)
+
+    with open(to_file, 'w', encoding='utf-8') as f:
+        json.dump(json_list, f, indent=2)
+
+
+if __name__ == '__main__':
+    csv2json(Path('Seminar_83_db.csv'), Path('Seminar_84_db_csv.json'))
+
+
+"""Task_5
+Напишите функцию, которая ищет json файлы в указанной директории и сохраняет их содержимое в виде одноимённых pickle файлов.
+"""
+
+import json
+import pickle
+import os
+
+def json_to_pickle(directory='.'):
+    for file in os.listdir(directory):
+        file_name, file_extension = os.path.splitext(file)
+        # print(file_extension)
+        if file_extension == '.json':
+            with open(os.path.join(directory, file), 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            with open(os.path.join(directory, file_name + '.pickle'), 'wb') as f_pickle:
+                pickle.dump(data, f_pickle)
+
+
+if __name__ == '__main__':
+    json_to_pickle()
+
+"""Task_6
+Напишите функцию, которая преобразует pickle файл хранящий список словарей в табличный csv файл.
+Для тестированию возьмите pickle версию файла из задачи 4 семинара.
+Функция должна извлекать ключи словаря для заголовков столбца из переданного файла.
+"""
+
+import csv
+import pickle
+from pathlib import Path
+
+
+def pickle2csv(file: Path) -> None:
+    with (
+        open(file, 'rb') as f_read,
+        open(f'{file.stem}_2.csv', 'w', newline='', encoding='utf-8') as f_write,
+    ):
+        data = pickle.load(f_read)
+
+        keys = list(data[0].keys())
+        csv_write = csv.DictWriter(f_write, fieldnames=keys, dialect='excel', quoting=csv.QUOTE_NONNUMERIC)
+
+        csv_write.writeheader()
+        csv_write.writerows(data)
+
+
+if __name__ == '__main__':
+    pickle2csv(Path('Seminar_84_db_csv.pickle'))
+
+"""Task_7
+Прочитайте созданный в прошлом задании csv файл без использования csv.DictReader. Распечатайте его как pickle строку.
+"""
+
+import csv
+import pickle
+from pathlib import Path
+
+
+def csv2pickles(file: Path) -> None:
+    pickle_list = []
+    with open(file, 'r', newline='', encoding='utf-8') as f:
+        csv_file = csv.reader(f, dialect='excel')
+        for i, line in enumerate(csv_file):
+            if i == 0:
+                pickle_keys = line
+            else:
+                pickle_dict = {k: v for k, v in zip(pickle_keys, line)}
+                pickle_list.append(pickle_dict)
+
+    print(pickle.dumps(pickle_list))
+
+
+if __name__ == '__main__':
+    csv2pickles(Path('Seminar_84_db_csv_2.csv'))
