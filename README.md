@@ -7,6 +7,6 @@
 ### Task_5 -  Урок 5. Интераторы и генераторы (iter(), next(), comprehensions, *unpacking, yield)
 ### Task_6 -  Урок 6. Модули (import module, from module import name <-> *, __all__, __init__.py, sys-argv, random)
 ### Task_7 -  Урок 7. Файлы и файловая система (with open(file, 'r', encoding='utf-8'), os, path)
-
+### Task_8 -  Урок 8. Сериализация (JSON, CSV, pickle)
 
 расширение mypy and flat 8
